@@ -6,10 +6,9 @@ public class Main {
 		// cria o labirinto
 		Maze maze = new Maze();
 		maze.setMaze();
-		
-		DrawMaze dm = new DrawMaze(maze.getMatriz());
-		
-		Heuristic heu = new Heuristic();
+		Heuristic heu = new Heuristic(maze.getMatriz());
+		Tela tela = new Tela(heu);
+		// DrawMaze dm = new DrawMaze();
 
 	}
 
