@@ -77,7 +77,7 @@ public class Tela extends JFrame {
 									.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(ButtonAlgoritmoGnetico, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(ButtonAlgoritmoGnetico, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
 										.addComponent(lblAlgoritmoA, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
 									.addGap(29)))
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -102,10 +102,10 @@ public class Tela extends JFrame {
 					.addGap(10)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panel_4, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 							.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
 							.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)))
-					.addContainerGap())
+					.addGap(0))
 		);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		panel.setLayout(new BorderLayout(0, 0));

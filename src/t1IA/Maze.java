@@ -1,50 +1,66 @@
 package t1IA;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import sun.security.util.Length;
+
 public class Maze {
-	int[][] maze = { { 9, 0, 0, 0, 0, 0, 0, 0, 1, 0 }, 
-					 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
-					 { 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 }, 
-					 { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 }, 
-					 { 1, 1, 0, 1, 0, 0, 0, 0, 0, 0 },
-					 { 1, 1, 1, 1, 0, 1, 1, 1, 1, 1 }, 
-					 { 1, 0, 0, 0, 0, 1, 1, 0, 1, 8 }, 
-					 { 1, 0, 1, 1, 1, 1, 1, 1, 0, 0 },
-					 { 1, 0, 0, 0, 0, 0, 0, 1, 1, 0 }, 
-					 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 }, };
-	
+	private int[][] maze;
+	private int confirmaSaida = 0;
 	private int entrada[] = new int[2];
 	private int saida[] = new int[2];
+
 	public Maze() throws Exception {
-		entrada [0]=999999999;
-		for(int i = 0; i<maze.length; i++) {
-			for (int j = 0; j < maze[0].length; j++) {
-				if(maze[i][j]==9) {
-					setEntrada(i,j);
-					break;
-				}
-			}
-		}
-		
-		if(entrada[0]==999999999) {
-			System.out.println("entrada nao encontrada");
-			throw new Exception();
-		}else {
-			System.out.println("entrada encontrada");
-			for(int i = 0; i<maze.length; i++) {
-				for (int j = 0; j < maze[0].length; j++) {
-					if(maze[i][j]==8) {
-						setSaida(i,j);
-						System.out.println("saida encontrada");
-						break;
-					}
-				}
-			}
-		}
-		
+
 	}
 
-	public void setMaze() {
+	public void setMaze(String caminho) throws Exception {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					new FileInputStream(caminho), "UTF8"));
 
+			String line;
+			line = br.readLine();
+			maze = new int[Integer.parseInt(line)][Integer.parseInt(line)];
+			int j = 0;
+			int k = 0;
+			while ((line = br.readLine()) != null) {
+				for (int i = 0; i < line.length(); i++) {
+					if (i % 2 == 0) {
+						if (line.charAt(i) == '0') {
+							maze[j][k] = 1;
+							k++;
+						} else if (line.charAt(i) == '1') {
+							maze[j][k] = 0;
+							k++;
+						} else if (line.charAt(i) == 'E') {
+							maze[j][k] = 9;
+							setEntrada(j, k);
+							k++;
+						} else if (line.charAt(i) == 'S') {
+							maze[j][k]=8;
+							confirmaSaida=1;
+							setSaida(j, k);
+							k++;
+						} else {
+							System.out.println("char nao reconhecido");
+							System.out.println(line.charAt(i));
+							System.err.println("aaaaaa");
+						}
+
+					}
+				}
+				j++;
+				k = 0;
+			}
+			br.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public int[][] getMatriz() {
@@ -68,6 +84,14 @@ public class Maze {
 	public void setSaida(int x, int y) {
 		this.saida[0] = x;
 		this.saida[1] = y;
+		confirmaSaida=1;
+	}
+
+	public boolean jaEncontrouSaida() {
+		if (confirmaSaida == 1) {
+			return true;
+		}
+		return false;
 	}
 
 }
