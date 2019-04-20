@@ -30,11 +30,16 @@ public class Heuristic {
 			// 2: por onde o agente passou
 			// 9: entrada
 			// 8: saida
-
 			List<Nodo> listaAberta = new ArrayList<Nodo>();
 			List<Nodo> listaFechada = new ArrayList<Nodo>();
-			int[][] mazeCopy = maze.clone();
+			int[][] mazeCopy = new int[maze.length][maze.length];
 
+			for (int i = 0; i < maze.length; i++) {
+				for (int j = 0; j < maze.length; j++) {
+					mazeCopy[i][j]=maze[i][j];
+				}
+			}
+			
 			int primeiroNodo[] = matriz.getEntrada();
 			Nodo pai = new Nodo(0, primeiroNodo[0], primeiroNodo[1]);
 			listaAberta.add(pai);
@@ -169,23 +174,31 @@ public class Heuristic {
 		int x = panel_1.getWidth() / 2;
 		int y = maze.length / 2;
 		int z = x - (27 * y);
+		
+		int[][] mazeCopy = new int[maze.length][maze.length];
 
+		for (int i = 0; i < maze.length; i++) {
+			for (int j = 0; j < maze.length; j++) {
+				mazeCopy[i][j]=maze[i][j];
+			}
+		}
+		
 		localX = z;
 		localY = 0;
 		g.setColor(Color.BLACK);
-		for (int i = 0; i < maze.length; i++) {
-			for (int j = 0; j < maze.length; j++) {
-				if (maze[i][j] == 0) {
+		for (int i = 0; i < mazeCopy.length; i++) {
+			for (int j = 0; j < mazeCopy.length; j++) {
+				if (mazeCopy[i][j] == 0) {
 					g.fill3DRect(localX, localY, 25, 25, false);
 					localX = localX + 27;
-				} else if (maze[i][j] == 2) {
+				} else if (mazeCopy[i][j] == 2) {
 					g.fillOval(localX + 7, localY + 7, 10, 10);
 					g.draw3DRect(localX, localY, 25, 25, false);
 					localX = localX + 27;
-				} else if (maze[i][j] == 1) {
+				} else if (mazeCopy[i][j] == 1) {
 					g.draw3DRect(localX, localY, 25, 25, false);
 					localX = localX + 27;
-				} else if (maze[i][j] == 9) {
+				} else if (mazeCopy[i][j] == 9) {
 					g.setColor(Color.RED);
 					g.fill3DRect(localX, localY, 25, 25, false);
 					localX = localX + 27;
