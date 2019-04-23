@@ -19,8 +19,7 @@ public class Maze {
 
 	public void setMaze(String caminho) throws Exception {
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					new FileInputStream(caminho), "UTF8"));
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(caminho), "UTF8"));
 
 			String line;
 			line = br.readLine();
@@ -41,8 +40,7 @@ public class Maze {
 							setEntrada(j, k);
 							k++;
 						} else if (line.charAt(i) == 'S') {
-							maze[j][k]=8;
-							confirmaSaida=1;
+							maze[j][k] = 8;
 							setSaida(j, k);
 							k++;
 						} else {
@@ -84,7 +82,7 @@ public class Maze {
 	public void setSaida(int x, int y) {
 		this.saida[0] = x;
 		this.saida[1] = y;
-		confirmaSaida=1;
+		confirmaSaida = 0;
 	}
 
 	public boolean jaEncontrouSaida() {
@@ -92,6 +90,10 @@ public class Maze {
 			return true;
 		}
 		return false;
+	}
+
+	public void encontrouSaida() {
+		confirmaSaida = 1;
 	}
 
 }

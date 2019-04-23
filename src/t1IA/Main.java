@@ -3,8 +3,7 @@ package t1IA;
 
 public class Main {
 	public static void main(String[] args) {
-		String caminho = "C:\\Users\\luttb\\Desktop\\lab\\labirinto3_20.txt";
-		
+		String caminho = "C:\\Users\\luttb\\Desktop\\lab\\labirinto4_20.txt";
 		
 		// cria o labirinto
 		Maze maze;

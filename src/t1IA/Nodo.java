@@ -1,5 +1,8 @@
 package t1IA;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Nodo {
 
 	private int pesoF;
@@ -9,6 +12,8 @@ public class Nodo {
 	private Nodo ant;
 	private int eixoX;
 	private int eixoY;
+	private List<Nodo> proximo;
+	private boolean entrada;
 
 	public Nodo(int id, int eixoX, int eixoY) {
 		this.idNo = id;
@@ -18,6 +23,29 @@ public class Nodo {
 		ant = null;
 		this.eixoX = eixoX;
 		this.eixoY = eixoY;
+		this.proximo = null;
+		proximo = new ArrayList<Nodo>();
+		this.entrada = false;
+	}
+
+	public boolean getEntrada() {
+		return entrada;
+	}
+
+	public void setEntrada() {
+		this.entrada = true;
+	}
+
+	public void removeProx(int pos) {
+		proximo.remove(pos);
+	}
+
+	public List<Nodo> getProx() {
+		return proximo;
+	}
+
+	public void setProx(Nodo n) {
+		proximo.add(n);
 	}
 
 	public int getId() {
